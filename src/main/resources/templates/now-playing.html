@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Now Playing</title>
+</head>
+<body>
+<nav>
+    <a href="/">Home</a>
+    <a href="/popular-name">Popular Name</a>
+</nav>
+<h1>These movies are playing in theaters:</h1>
+
+        <th:block th:each="movie : ${results}">
+            <div>
+
+            <img width="150px" src="'http://image.tmdb.org/t/p/original + ${movie.poster_path}"/>
+            <h3 th:text="${movie.title}"></h3>
+                <h4>Overview:</h4>
+                    <p th:text="${movie.overview}"></p>
+                <h4>Popularity:</h4>
+                    <p th:text="${movie.popularity}"></p>
+
+            </div>
+        </th:block>
+
+</body>
+</html>
