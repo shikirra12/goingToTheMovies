@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Medium Popular Long Name</title>
@@ -11,5 +11,20 @@
 </nav>
 
 <h1>THIS IS MEDIUM POPULAR LONG NAME</h1>
+
+
+<th:block th:each="movie : ${results}">
+    <div>
+
+        <img width="150px" th:src="${movie.posterPath}"/>
+        <h3 th:text="${movie.title}"></h3>
+        <h4>Overview:</h4>
+        <p th:text="${movie.overview}"></p>
+        <h4>Popularity:</h4>
+        <p th:text="${movie.popularity}"></p>
+
+    </div>
+</th:block>
+
 </body>
 </html>

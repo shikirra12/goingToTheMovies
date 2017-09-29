@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MovieController {
@@ -41,10 +42,13 @@ public class MovieController {
 
     @RequestMapping(path = "/popular-name", method = RequestMethod.GET)
     public String mediumPopular(Model model){
-        getMovies(url).stream()
-                .filter(movie -> movie.title.length() >= 10)
-                .filter(movie -> movie.popularity.value() > 30 < 80);
 
+        List<Movie> movies = getMovies(url).stream()
+                .filter(movie -> movie.title.length() >= 10)
+                .filter(movie -> movie.getPopularity() > 30 && movie.getPopularity() < 80)
+                .collect(Collectors.toList());
+
+        model.addAttribute("results", movies);
         return "popular-name";
     }
 }

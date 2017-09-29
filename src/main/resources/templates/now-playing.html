@@ -14,7 +14,7 @@
         <th:block th:each="movie : ${results}">
             <div>
 
-            <img width="150px" src="'http://image.tmdb.org/t/p/original + ${movie.poster_path}"/>
+            <img width="150px" th:src="${movie.posterPath}"/>
             <h3 th:text="${movie.title}"></h3>
                 <h4>Overview:</h4>
                     <p th:text="${movie.overview}"></p>
